@@ -50,4 +50,3 @@ npm run dev
 - V1 Vocal Mix (MR + Vocal)
 - V2 Take Selection
 - V3 AI Comping + Pitch/Timing
->>>>>>> 14eda4b (feat : 프로젝트 초기세팅 및 1단계 기능 구현)
