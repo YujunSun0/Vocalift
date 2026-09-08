@@ -1,7 +1,5 @@
 AI Vocal Production Assistant — V0: 자동 마스터링 + 수치 조절 + Original/Mastered A/B
 
-디자인 레퍼런스: [Munute AI Mastering](https://www.munute.com/ai-mastering)
-
 ## 구조
 
 ```
