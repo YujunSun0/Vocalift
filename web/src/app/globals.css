@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #04040a;
+  --violet: #8b5cf6;
+  --cyan: #22d3ee;
+  --text: #f5f3ff;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --font-sans: var(--font-outfit);
+  --font-display: var(--font-syne);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font-family: var(--font-outfit), var(--font-noto), sans-serif;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.28);
+}
+
+.vocalift-bg {
+  background:
+    radial-gradient(ellipse 55% 45% at 18% 30%, rgba(124, 58, 237, 0.22), transparent 58%),
+    radial-gradient(ellipse 45% 40% at 82% 55%, rgba(8, 145, 178, 0.16), transparent 55%),
+    radial-gradient(ellipse 40% 30% at 60% 10%, rgba(167, 139, 250, 0.08), transparent 50%),
+    linear-gradient(165deg, #04040a 0%, #0a0714 48%, #05060d 100%);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #a5f3fc;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.55);
+  cursor: pointer;
+}

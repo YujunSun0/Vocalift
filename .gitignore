@@ -1,0 +1,13 @@
+.DS_Store
+*.pyc
+__pycache__/
+.venv/
+api/storage/uploads/*/
+api/storage/processed/*
+!api/storage/uploads/.gitkeep
+!api/storage/processed/.gitkeep
+web/node_modules/
+web/.next/
+*.wav
+.env
+.env.local
