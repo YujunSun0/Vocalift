@@ -8,6 +8,14 @@ export type AudioAnalysis = {
   dynamic_range_db: number;
 };
 
+export type StemAnalysis = {
+  sample_rate: number;
+  channels: number;
+  duration_sec: number;
+  peak_db: number;
+  rms_db: number;
+};
+
 export type MasteringParams = {
   low_shelf_hz: number;
   low_shelf_db: number;
@@ -35,6 +43,15 @@ export type ProjectResponse = {
   original_url: string;
   preview_url: string;
   processed_analysis: AudioAnalysis;
+};
+
+export type SeparationResponse = {
+  separation_id: string;
+  filename: string;
+  vocals_url: string;
+  instrumental_url: string;
+  vocals_analysis: StemAnalysis;
+  instrumental_analysis: StemAnalysis;
 };
 
 export type UploadSource = "track" | "youtube" | "reference";

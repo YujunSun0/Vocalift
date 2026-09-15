@@ -53,3 +53,24 @@ class ProjectResponse(BaseModel):
 
 class ProcessRequest(BaseModel):
     params: MasteringParams
+
+
+class StemAnalysis(BaseModel):
+    """분리된 스템(vocals/instrumental)의 기본 분석 정보."""
+
+    sample_rate: int
+    channels: int
+    duration_sec: float
+    peak_db: float
+    rms_db: float
+
+
+class SeparationResponse(BaseModel):
+    """음원 분리 결과 응답."""
+
+    separation_id: str
+    filename: str
+    vocals_url: str
+    instrumental_url: str
+    vocals_analysis: StemAnalysis
+    instrumental_analysis: StemAnalysis
