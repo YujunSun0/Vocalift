@@ -1,4 +1,8 @@
-import type { MasteringParams, ProjectResponse } from "@/types/mastering";
+import type {
+  MasteringParams,
+  ProjectResponse,
+  SeparationResponse,
+} from "@/types/mastering";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? "";
 
@@ -32,6 +36,27 @@ export async function reprocessProject(
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ params }),
   });
+  if (!res.ok) throw new Error(await parseError(res));
+  return res.json();
+}
+
+export async function createSeparation(
+  file: File
+): Promise<SeparationResponse> {
+  const form = new FormData();
+  form.append("file", file);
+  const res = await fetch(`${API_BASE}/api/separation`, {
+    method: "POST",
+    body: form,
+  });
+  if (!res.ok) throw new Error(await parseError(res));
+  return res.json();
+}
+
+export async function getSeparation(
+  separationId: string
+): Promise<SeparationResponse> {
+  const res = await fetch(`${API_BASE}/api/separation/${separationId}`);
   if (!res.ok) throw new Error(await parseError(res));
   return res.json();
 }
