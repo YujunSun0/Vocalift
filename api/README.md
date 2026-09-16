@@ -42,7 +42,24 @@ sudo apt update && sudo apt install ffmpeg
 # https://ffmpeg.org/download.html 에서 다운로드
 ```
 
-4. Demucs 모델 다운로드:
+4. **macOS 전용**: SSL 인증서 설정 (Python.org 설치본 사용 시)
+
+macOS에서 Python.org에서 다운로드한 Python을 사용하는 경우, SSL 인증서 문제가 발생할 수 있습니다. 다음 명령을 실행하세요:
+
+```bash
+# Python 버전에 맞게 경로 조정 (3.12, 3.11, 3.10 등)
+/Applications/Python\ 3.12/Install\ Certificates.command
+```
+
+또는:
+
+```bash
+pip install --upgrade certifi
+```
+
+이 단계를 건너뛰면 Demucs 모델 다운로드 시 `CERTIFICATE_VERIFY_FAILED` 오류가 발생할 수 있습니다.
+
+5. Demucs 모델 다운로드:
 
 첫 실행 시 Demucs가 자동으로 모델을 다운로드합니다 (~316MB).
 수동으로 사전 다운로드하려면:
@@ -121,10 +138,32 @@ MAX_UPLOAD_MB=100
 
 ## Troubleshooting
 
+### SSL Certificate Error (macOS)
+
+**증상**: `CERTIFICATE_VERIFY_FAILED` 에러로 음원 분리 실패
+
+**해결**:
+1. Python Certificates 설치:
+   ```bash
+   /Applications/Python\ 3.XX/Install\ Certificates.command
+   ```
+2. 또는 certifi 업그레이드:
+   ```bash
+   pip install --upgrade certifi
+   ```
+3. 환경 확인:
+   ```bash
+   python -c "import ssl; print(ssl.get_default_verify_paths())"
+   ```
+
 ### Demucs 실행 실패
 
 - `demucs` 명령어가 PATH에 있는지 확인
 - 가상환경이 활성화되었는지 확인
+- 모델 수동 다운로드 시도:
+  ```bash
+  python -c "from demucs import pretrained; pretrained.get_model('htdemucs')"
+  ```
 
 ### FFmpeg 관련 오류
 
